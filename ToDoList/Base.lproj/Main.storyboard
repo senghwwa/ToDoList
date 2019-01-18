@@ -18,14 +18,52 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCellIdentifier" id="KCp-Ge-DOr">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCellIdentifier" id="KCp-Ge-DOr" customClass="ToDoCell" customModule="ToDoList" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KCp-Ge-DOr" id="qiC-Bh-7ic">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rpm-Sj-rit">
+                                            <rect key="frame" x="8" y="4" width="36" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="36" id="0nI-Tb-KT9"/>
+                                                <constraint firstAttribute="height" constant="36" id="fZn-rh-UuS"/>
+                                            </constraints>
+                                            <state key="normal" image="Unchecked">
+                                                <attributedString key="attributedTitle">
+                                                    <fragment content="Button">
+                                                        <attributes>
+                                                            <font key="NSFont" metaFont="system" size="15"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                            </state>
+                                            <state key="selected" image="Checked"/>
+                                            <connections>
+                                                <action selector="completeButtonTapped:" destination="KCp-Ge-DOr" eventType="touchUpInside" id="RUc-zh-4lN"/>
+                                                <action selector="isCompleteButtonTapped:" destination="FYl-uL-nUZ" eventType="touchUpInside" id="Lxi-Dx-Mri"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cF-zh-jqc">
+                                            <rect key="frame" x="52" y="11.5" width="315" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="4cF-zh-jqc" secondAttribute="trailing" constant="8" id="8WL-oN-PqH"/>
+                                        <constraint firstItem="4cF-zh-jqc" firstAttribute="leading" secondItem="Rpm-Sj-rit" secondAttribute="trailing" constant="8" id="Lsk-NZ-cA9"/>
+                                        <constraint firstItem="Rpm-Sj-rit" firstAttribute="centerY" secondItem="qiC-Bh-7ic" secondAttribute="centerY" id="OdO-zD-Mby"/>
+                                        <constraint firstItem="Rpm-Sj-rit" firstAttribute="leading" secondItem="qiC-Bh-7ic" secondAttribute="leading" constant="8" id="cZe-E8-Xdm"/>
+                                        <constraint firstItem="4cF-zh-jqc" firstAttribute="centerY" secondItem="qiC-Bh-7ic" secondAttribute="centerY" id="eFx-Wl-l3b"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="isCompleteButton" destination="Rpm-Sj-rit" id="2gS-Ed-jow"/>
+                                    <outlet property="titleLabel" destination="4cF-zh-jqc" id="Wxp-y3-EAh"/>
                                     <segue destination="FYl-uL-nUZ" kind="show" identifier="showDetails" id="K5P-UW-Dcl"/>
                                 </connections>
                             </tableViewCell>
