@@ -47,7 +47,7 @@
         <!--New ToDo-->
         <scene sceneID="XFH-5S-u5K">
             <objects>
-                <tableViewController id="FYl-uL-nUZ" sceneMemberID="viewController">
+                <tableViewController id="FYl-uL-nUZ" customClass="ToDoDetailTableViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="eM9-WW-yEg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,12 +78,19 @@
                                                         </attributedString>
                                                     </state>
                                                     <state key="selected" image="Checked"/>
+                                                    <connections>
+                                                        <action selector="isCompleteButtonTapped:" destination="FYl-uL-nUZ" eventType="touchUpInside" id="X14-J8-MFe"/>
+                                                    </connections>
                                                 </button>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Remind me to ..." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ruf-VU-xbc">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Remind me to ..." borderStyle="roundedRect" placeholder="Remind me to ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ruf-VU-xbc">
                                                     <rect key="frame" x="60" y="7" width="299" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="returnPressed:" destination="FYl-uL-nUZ" eventType="primaryActionTriggered" id="OMb-Hp-8am"/>
+                                                        <action selector="textEditingChanged:" destination="FYl-uL-nUZ" eventType="editingChanged" id="wzG-wC-HR2"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -126,6 +133,9 @@
                                                     <date key="date" timeIntervalSinceReferenceDate="569427449.39128602">
                                                         <!--2019-01-17 14:17:29 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="datePickerChanged:" destination="FYl-uL-nUZ" eventType="primaryActionTriggered" id="gRm-NI-tpw"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
@@ -153,7 +163,6 @@
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="93b-nS-aUT">
                                                     <rect key="frame" x="16" y="11" width="343" height="178"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -186,6 +195,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dueDateLabel" destination="vjR-Hi-Aak" id="j04-e0-253"/>
+                        <outlet property="dueDatePickerView" destination="yt4-0g-3hF" id="3rH-3v-JA1"/>
+                        <outlet property="isCompleteButton" destination="5YY-3R-IXE" id="FTw-qf-FeW"/>
+                        <outlet property="notesTextView" destination="93b-nS-aUT" id="hya-K2-SFs"/>
+                        <outlet property="saveButton" destination="OYB-AA-AZQ" id="Fxg-dG-dhp"/>
+                        <outlet property="titleTextField" destination="Ruf-VU-xbc" id="3Eh-SZ-Mgg"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gq1-3R-VII" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Nl5-RT-Jf9" userLabel="Exit" sceneMemberID="exit"/>
